@@ -1,0 +1,49 @@
+<div class='form-group align-item-center container border' >
+  <%= form_for @task do |f| %>
+    <div class='row'>  
+      <p class='col-4'></p>
+      <div class='col-4 text-center' >
+        <%= f.label :title, 'Title:' %>
+        <%= f.text_field :title, class: 'form-control mb-2', placeholder: 'Task Tittle'%>
+      </div>
+    </div>
+    <br> 
+      
+    <div class='row'>
+      <p class='col-4'></p> 
+      <div class='col-4' align='center'>
+        <%= f.label :description, 'Task description'%>
+        <%= f.text_area :description, class: 'form-control mb-2', rows: '4'%>
+      </div> 
+    </div>
+
+    <br>
+    <div class='row'>  
+      <p class='col-4'></p>
+      <div class='col-4 text-center' >
+        <%= f.label :status, 'Status:' %>
+        <%= f.select :status, ["incomplete", "complete"], class: 'form-control mb-2', placeholder: 'Task Status' %>
+      </div>
+    </div>
+    <br>
+        <div class='row'>  
+      <p class='col-4'></p>
+      <div class='col-4 text-center' >
+        <%= f.label :priority, 'Priority:' %>
+        <%= f.select :priority, ["low", "medium", "high"], class: 'form-control mb-2', placeholder: 'Task Priority' %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class='row'>
+      <p class='col-4'></p
+      <div class='col-4' align='center'> 
+        <%= f.hidden_field :task_id, value: params[:id] %>
+        <%= f.submit class: 'btn btn-primary col-4' %>
+        <%= link_to 'Go Back', :back, class: 'btn btn-secondary col-4' %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

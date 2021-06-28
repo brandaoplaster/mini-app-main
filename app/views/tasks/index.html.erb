@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <p id="notice">
+    <%= notice %>
+  </p>
+
+  <h1>Tasks</h1>
+</div>
+
+<div class='d-flex container justify-content-center'>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Tasks (ID)</th>
+        <th scope="col">Comments</th>
+        <th scope="col">Status</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td scope="row">
+            <%= task.id %>
+          </td>
+          <td>
+            <% task.comments.all.sort{|a,b| a.body.to_s.downcase <=> b.body.to_s.downcase}.each do |comment| %>
+              <%= comment.body %>
+                <br>
+            <% end %>
+          </td>
+          <td>
+            <%= task.status %>
+          </td>
+          <td>
+            <div class="btn-group group" role="group">
+              <button type="button" class="btn btn-info">
+                <%= link_to 'Show' , task %>
+              </button>
+              <button type="button" class="btn btn-primary">
+                <%= link_to 'Edit' , edit_task_path(task) %>
+              </button>
+              <button type="button" class="btn btn-danger">
+                <%= link_to 'Destroy' , task, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class='d-flex justify-content-center'>
+  <%= link_to 'New Task', new_task_path, class: 'btn btn-primary col-1' %>
+</div>

@@ -1,0 +1,35 @@
+<div class='d-flex container justify-content-center'>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Status</th>
+        <th scope="col">User nickname</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td><%=@task.id %></td>    
+        <td><%=@task.title %></td>    
+        <td><%=@task.description %></td>
+        <td><%=@task.priority %></td>
+        <td><%=@task.status %></td>
+        <td><%=@task.user.profile.nickname %></td>
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class='row'>
+  <p class='col-4'></p
+  <div class='col-4'> 
+    <%= link_to 'Go Back', :back, class: 'btn btn-secondary col-4' %>
+  </div>
+</div>
