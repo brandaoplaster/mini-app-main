@@ -5,24 +5,41 @@ class TasksController < ApplicationController
   skip_before_action :verify_authenticity_token, only: %i[search]
     
   def index
+    @tasks = Task.all.where(status: :complete).order(id: :desc)
   end
 
-  def show 
+  def show
   end
 
   def new
+    @task = Task.new
   end
 
   def create
+    # @task = Task.new(task_params.merge(user_id: current_user))
+    @task = Task.new(task_params)
+    @task.user_id = current_user.id
+    if @task.save
+      redirect_to tasks_path, notice: 'Task was successfully created!'
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
-  def update 
+  def update
+    if @task.update(task_params)
+      redirect_to tasks_path, notice: 'Task was successfully updated!'
+    else
+      redirect_to tasks_path, notice: 'Error updating task'
+    end
   end
 
   def destroy
+    @task.destroy
+    redirect_to tasks_path
   end
 
   def complete
@@ -33,7 +50,12 @@ class TasksController < ApplicationController
 
   private
 
+  def find_task
+    @task = Task.find(params[:id])
+  end
+
   def task_params
+    params.require(:task).permit(:title, :description, :priority, :status)
   end  
 
   def comment_params
