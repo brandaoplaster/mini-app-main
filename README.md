@@ -1,7 +1,11 @@
 ## Challenge AutoSeg
 ### TaskManager App
-Considere o app deste projeto já estruturado, onde nele conseguimos cadastrar tarefas do dia-a-dia a serem realizadas, junto com uma descrição, colocar comentários e algumas outras features :) 
-  Então... considere a atual estrutura de model já existente:
+Considere o app deste projeto já estruturado, onde nele conseguimos cadastrar 
+tarefas do dia-a-dia a serem realizadas, junto com uma descrição, colocar comentários
+e algumas outras features :) 
+Então... considere a atual estrutura de model já existente:
+
+```
                 ____________
                | User       |
         _____* | - email    |
@@ -17,19 +21,20 @@ Considere o app deste projeto já estruturado, onde nele conseguimos cadastrar t
 | - priority    |            | - like   |             
 | - share       |            |__________|
 |_______________|
+```
 ### Instruções para o challenge
 0 - Versão do Ruby
 `ruby 2.7.1`
 1 - Clone o projeto
 ```console
-$ git clone git@github.com:autoseg/mini-app.git
+git clone https://github.com/brandaoplaster/mini-app-main.git
 ```
 2 - Build o projeto e roda os seeds
 ```console
-$ bundle install
-$ bundle exec rails db:create db:migrate db:seeds
-$ yarn install --check-files
-$ rails s
+bundle install
+bundle exec rails db:create db:migrate db:seeds
+yarn install --check-files
+rails s
 ```
 3 - Ao acessar a aplicação, crie uma conta. 
 ### Tarefa 1
@@ -38,11 +43,14 @@ Porém há um bug nesta feature, a atividade da tarefa 1 é tentar identificá-l
 ### Tarefa 2
 2 - Para esta tarefa é necessário a execução do seeds antes, certifique-se que você populou o banco de dados.
 2.1 - Esta atividade é para ser criado um relatório de todas as Tarefas, onde listaremos algo semelhante ao exemplo abaixo:
+
+```
 ___________________________________ 
 | Tasks (ID) | Comments | Status   |
 | 1          | Aaaaaa   | complete |
 | 2          | Bbbbbb   | complete |
 |__________________________________|
+```
 2.2 - Para isto, crie:
  - Uma controller;
  - Uma rota;
